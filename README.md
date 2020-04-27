@@ -1,2 +1,2 @@
 # TutorialFiles
-Sample files developed on our YouTube tutorials
+Sample files from out YouTube tutorials and live streams! 🖼️👨‍🏫💻
