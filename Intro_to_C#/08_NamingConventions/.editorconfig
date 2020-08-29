@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0219: Variable is assigned but its value is never used
+dotnet_diagnostic.CS0219.severity = error
