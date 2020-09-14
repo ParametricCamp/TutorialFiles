@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03_NumericalSequences", "E03_NumericalSequences\E03_NumericalSequences.csproj", "{7CAE67C4-9240-49F1-A9FC-353B9B325129}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CAE67C4-9240-49F1-A9FC-353B9B325129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAE67C4-9240-49F1-A9FC-353B9B325129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAE67C4-9240-49F1-A9FC-353B9B325129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAE67C4-9240-49F1-A9FC-353B9B325129}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B33D68C8-B0E0-47BB-A5C3-395F3D67D5CB}
+	EndGlobalSection
+EndGlobal
