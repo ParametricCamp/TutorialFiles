@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyGeometryKernel</name>
+    </assembly>
+    <members>
+        <member name="M:MyGeometryKernel.Line.#ctor(MyGeometryKernel.Point,MyGeometryKernel.Point)">
+            <summary>
+            Create a MyLine object from two MyPoints. 
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Line.#ctor(MyGeometryKernel.Point,MyGeometryKernel.Vector)">
+            <summary>
+            Create a MyLine object from a MyPoint and a MyVector.
+            </summary>
+            <param name="start"></param>
+            <param name="direction"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Line.GetLength">
+            <summary>
+            Returns the length of this MyLine.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Line.ToString">
+            <summary>
+            Returns a string representation of this object. Use the 'override' modifier to tell C#
+            that you want to use this method to turn objects into strings, rather than the original
+            one that comes by default with generic objects (you want to override it). 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyGeometryKernel.Point">
+            <summary>
+            A class representing a Point in three-dimensional space. 
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Point.X">
+            <summary>
+            X coordinate.
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Point.Y">
+            <summary>
+            Y coordinate.
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Point.Z">
+            <summary>
+            Z coordinate.
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Point.#ctor">
+            <summary>
+            Creates a MyPoint in the origin (0, 0, 0).
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Point.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a MyPoint from x, y, and z coordinates. 
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Point.#ctor(MyGeometryKernel.Point)">
+            <summary>
+            Creates a MyPoint as a copy of other.
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Point.DistanceTo(MyGeometryKernel.Point)">
+            <summary>
+            Compute the distance from this MyPoint to another.
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Point.ToString">
+            <summary>
+            Returns a string representation of this object. Use the 'override' modifier to tell C#
+            that you want to use this method to turn objects into strings, rather than the original
+            one that comes by default with generic objects (you want to override it). 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyGeometryKernel.Vector">
+            <summary>
+            A class representing a Vector in three dimensions.
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Vector.X">
+            <summary>
+            X coordinate
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Vector.Y">
+            <summary>
+            Y coordinate.
+            </summary>
+        </member>
+        <member name="F:MyGeometryKernel.Vector.Z">
+            <summary>
+            Z coordinate.
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.#ctor">
+            <summary>
+            Creates a zero (0, 0, 0) MyVector.
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            Creates a MyVector from x, y, and z coordinates. 
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.#ctor(MyGeometryKernel.Vector)">
+            <summary>
+            Creates a MyVector as a copy of other.
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.GetLength">
+            <summary>
+            Returns the length of this MyVector.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.Reverse">
+            <summary>
+            Flips the direction of this MyVector.
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.Scale(System.Double)">
+            <summary>
+            Scales this MyVector by a factor.
+            </summary>
+            <param name="factor"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.Unitize">
+            <summary>
+            Turns this into an unit vector. 
+            </summary>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.ToString">
+            <summary>
+            Returns a string representation of this object. Use the 'override' modifier to tell C#
+            that you want to use this method to turn objects into strings, rather than the original
+            one that comes by default with generic objects (you want to override it). 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.Addition(MyGeometryKernel.Vector,MyGeometryKernel.Vector)">
+            <summary>
+            Returns a new MyVector that is the arithmetic addition of two other vectors. 
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.DotProduct(MyGeometryKernel.Vector,MyGeometryKernel.Vector)">
+            <summary>
+            Returns the dot product of two vectors. 
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.CrossProduct(MyGeometryKernel.Vector,MyGeometryKernel.Vector)">
+            <summary>
+            Returns a new MyVector as the cross product of other two vectors.
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.AngleBetween(MyGeometryKernel.Vector,MyGeometryKernel.Vector,System.Boolean)">
+            <summary>
+            Computes the angle between two MyVectors. It can optionally return the value in radians
+            or degrees. 
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="degrees"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyGeometryKernel.Vector.BetweenPoints(MyGeometryKernel.Point,MyGeometryKernel.Point)">
+            <summary>
+            Returns a new MyVector 
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

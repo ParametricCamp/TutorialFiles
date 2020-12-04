@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGeometryKernel", "MyGeometryKernel\MyGeometryKernel.csproj", "{05BE7138-6CB2-4C36-BF9B-9D13EC564226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05BE7138-6CB2-4C36-BF9B-9D13EC564226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05BE7138-6CB2-4C36-BF9B-9D13EC564226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05BE7138-6CB2-4C36-BF9B-9D13EC564226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05BE7138-6CB2-4C36-BF9B-9D13EC564226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A75B7CD-BB4C-452B-9639-7C3AC655EDE7}
+	EndGlobalSection
+EndGlobal
