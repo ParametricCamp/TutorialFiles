@@ -23,6 +23,10 @@ wsServer.on('connection', function (socket) {
 
     });
 
+    socket.on('close', function () {
+        console.log('Client disconnected');
+    })
+
 });
 
 console.log( (new Date()) + " Server is listening on port " + PORT);
