@@ -1,3 +1,5 @@
+# Based on code from https://github.com/standupmaths/xmastree2020
+
 import board
 import neopixel
 import time 
