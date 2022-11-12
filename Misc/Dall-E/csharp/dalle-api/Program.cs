@@ -15,6 +15,8 @@ namespace dalle_api
     {
         static void Main(string[] args)
         {
+            // This example is part of the `Fun with Dall-E` video tutorial series
+            // at ParametricCamp: https://www.youtube.com/playlist?list=PLx3k0RGeXZ_zs3az0Z2BnpTIPH2lxQfFX
 
             string url = "https://api.openai.com/v1/images/generations";
             string bearerToken = Environment.GetEnvironmentVariable("OPENAI_API_KEY");

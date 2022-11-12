@@ -1,3 +1,5 @@
+# This example is part of the `Fun with Dall-E` video tutorial series
+# at ParametricCamp: https://www.youtube.com/playlist?list=PLx3k0RGeXZ_zs3az0Z2BnpTIPH2lxQfFX
 import os
 import requests
 import json
