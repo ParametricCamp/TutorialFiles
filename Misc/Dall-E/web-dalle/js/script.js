@@ -5,6 +5,7 @@ const imgContainer = document.getElementById('image-container');
 const reqStatus = document.getElementById('request-status');
 
 reqButton.onclick = function() {
+    reqButton.disabled = true;
     reqStatus.innerHTML = "Performing request...";
     
     const key = document.getElementById('api-key').value;
@@ -48,6 +49,7 @@ reqButton.onclick = function() {
 
 function addImages(jsonData)
 {
+    reqButton.disabled = false;
     if (jsonData.error)
     {
         reqStatus.innerHTML = 'ERROR: ' + jsonData.error.message;

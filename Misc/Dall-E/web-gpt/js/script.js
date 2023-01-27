@@ -9,6 +9,8 @@ const reqStatus = document.getElementById('request-status');
 
 // Attach click behavior to the button
 reqButton.onclick = function () {
+  // Disable request button to prevent duplicate requests
+  reqButton.disabled = true;
   // Give some feedback to user
   reqStatus.innerHTML = "Request started...";
 
@@ -69,6 +71,9 @@ reqButton.onclick = function () {
  */
 function addText(jsonData, prompt) {
   console.log(jsonData);
+
+  // Enable request button for further requests
+  reqButton.disabled = false;
 
   // Handle a possible error response from the API
   if (jsonData.error)
