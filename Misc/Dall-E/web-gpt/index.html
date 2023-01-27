@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello GPT</title>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <p>A sample webpage to learn how to query the Text Completion API from a front end application.</p>
+
+    <fieldset>
+        <legend>Setup</legend>
+
+        <div id="controls">
+            Please enter your OpenAI <a href="https://youtu.be/DFmmiYlbgX0" target="_blank">API key</a>:
+            <input id="api-key" value="YOUR-API-KEY-HERE">
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Prompt</legend>
+
+        <textarea id="text-prompt" rows="4" cols="52">Tell me the story of an invisible city full of dreamful architects</textarea>
+   
+        <div>Text Model:</div>
+        <div>
+            <input type="radio" id="model-davinci" name="text-model" value="text-davinci-003" checked>
+            <label for="text-davinci-003">Davinci (better)</label>
+        </div>
+        <div>
+            <input type="radio" id="model-curie" name="text-model" value="text-curie-001">
+            <label for="text-curie-001">Curie</label>
+        </div>
+        <div>
+            <input type="radio" id="model-babbage" name="text-model" value="text-babbage-001">
+            <label for="text-babbage-001">Babbage</label>
+        </div>
+        <div>
+            <input type="radio" id="model-ada" name="text-model" value="text-ada-001">
+            <label for="text-ada-001">Ada (faster)</label>
+        </div>
+
+        <div>
+            <div>Max. tokens (similar to words): <input id="token-count" value="256"></div>
+        </div>
+
+        <div>
+            <div>Temperature (0-1): <input id="temperature" value="0.1"></div>
+        </div>
+
+        <div>
+            <button id="button-request">Request</button>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Request Status</legend>
+        <div>
+            <p id="request-status">No request performed yet</p>
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <legend>Text Completions</legend>
+        
+        <!-- Received text will be added here -->
+        <div id="text-container"></div>
+    </fieldset>
+
+    <!-- Load the main script at the end of the page, when all the DOM elements are already present -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+* {
+    /* border: 1px solid coral; */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+.target-text {
+    font-weight: 900;
+}
+
+fieldset {
+    margin-bottom: 8px;
+}

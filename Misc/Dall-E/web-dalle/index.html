@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <header>
+        <title>Dall-E Webapp</title>
+
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </header>
+
+    <body>
+        <p>A custom OpenAI webapp for Dall-E</p>
+
+        <fieldset>
+            <legend>Setup</legend>
+            <div>
+                Please enter your <a href="https://www.youtube.com/watch?v=DFmmiYlbgX0&list=PLx3k0RGeXZ_zs3az0Z2BnpTIPH2lxQfFX&index=4" target="_blank">OpenAI API Key</a>: <input id="api-key" value="YOUR-API-KEY-HERE">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Request parameters</legend>
+            <div>
+                <textarea id="text-prompt" rows="4" cols="52">An isometric view of a miniature city, tilt shift, bokeh, voxel, vray render, high detail</textarea>
+            </div>
+    
+            <div>
+                Image count (1-4): <input id="image-count" value="1">
+            </div>
+    
+            <div>
+                Image size:
+            </div>
+    
+            <div>
+                <input type="radio" id="radio-256" name="image-size" value="256" checked>
+                <label for="256">256</label>
+            </div>
+            <div>
+                <input type="radio" id="radio-512" name="image-size" value="512">
+                <label for="512">512</label>
+            </div>
+            <div>
+                <input type="radio" id="radio-1024" name="image-size" value="1024">
+                <label for="1024">1024</label>
+            </div>
+    
+            <div>
+                <button id="button-request">Request</button>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Request Status</legend>
+            <div>
+                <p id="request-status">No request performed yet</p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Images</legend>
+
+            <!-- Response images will be added here -->
+            <div id="image-container"></div>
+
+        </fieldset>
+
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>
