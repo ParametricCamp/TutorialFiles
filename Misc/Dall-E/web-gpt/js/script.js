@@ -58,7 +58,10 @@ reqButton.onclick = function () {
   fetch(gptEndpoint, reqParams)
     .then(res => res.json())
     .then(json => addText(json, prompt))
-    .catch(error => reqStatus.innerHTML = error)
+    .catch(error => {
+      reqStatus.innerHTML = error;
+      reqButton.disabled = false;
+    });
 }
 
 

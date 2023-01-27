@@ -43,13 +43,17 @@ reqButton.onclick = function() {
         .then(res => res.json())
         // .then(json => console.log(json))
         .then(addImages)
-        .catch(error => reqStatus.innerHTML = error);
+        .catch(error => {
+            reqStatus.innerHTML = error;
+            reqButton.disabled = false;
+        });
 
 }
 
 function addImages(jsonData)
 {
     reqButton.disabled = false;
+    
     if (jsonData.error)
     {
         reqStatus.innerHTML = 'ERROR: ' + jsonData.error.message;
