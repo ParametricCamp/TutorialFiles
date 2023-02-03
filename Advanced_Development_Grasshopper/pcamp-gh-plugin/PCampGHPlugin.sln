@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCampGHPlugin", "PCampGHPlugin.csproj", "{FEC8AB30-BBC4-42BA-A0A1-A43BEBA0AD89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEC8AB30-BBC4-42BA-A0A1-A43BEBA0AD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC8AB30-BBC4-42BA-A0A1-A43BEBA0AD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC8AB30-BBC4-42BA-A0A1-A43BEBA0AD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC8AB30-BBC4-42BA-A0A1-A43BEBA0AD89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {825883D7-0E44-4079-B2B8-8D87F2430A23}
+	EndGlobalSection
+EndGlobal
