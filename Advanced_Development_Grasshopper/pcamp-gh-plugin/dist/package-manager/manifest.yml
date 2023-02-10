@@ -1,0 +1,15 @@
+name: ParametricCamp
+version: 0.1.0
+authors:
+  - Jose Luis García del Castillo y López
+  - The ParametricCamp Community
+description: >
+  A test app for teaching and learning, made at ParametricCamp
+  Tutorials: https://www.youtube.com/playlist?list=PLx3k0RGeXZ_yZgg-f2k7fO3WxBQ0zLCeU
+  Code: https://github.com/ParametricCamp/TutorialFiles/tree/master/Advanced_Development_Grasshopper
+url: "https://github.com/ParametricCamp/TutorialFiles/tree/master/Advanced_Development_Grasshopper"
+keyword:
+  - education
+  - learning
+  - YouTube
+icon: icon.png
