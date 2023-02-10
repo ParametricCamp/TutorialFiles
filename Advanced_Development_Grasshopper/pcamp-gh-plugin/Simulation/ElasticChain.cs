@@ -102,6 +102,8 @@ namespace PCampGHPlugin.Simulation
                 }
             }
 
+            if (nodes.Count == 0) return;
+
             // Update the location of the anchors
             nodes[0] = anchor0;
             nodes[nodes.Count - 1] = anchor1;

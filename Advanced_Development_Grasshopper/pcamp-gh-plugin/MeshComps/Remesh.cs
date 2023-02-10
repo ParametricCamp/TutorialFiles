@@ -7,6 +7,7 @@ using Rhino.Geometry;
 using PCampGHPlugin.Utils;
 
 using g3;
+using System.Diagnostics;
 
 namespace PCampGHPlugin.MeshComps
 {
@@ -54,12 +55,16 @@ namespace PCampGHPlugin.MeshComps
             if (!DA.GetData(1, ref targetLength)) return;
             if (!DA.GetData(2, ref passes)) return;
 
-            DMesh3 remeshed = RemeshToTargetEdgeLength(dm, targetLength, passes);
+            Stopwatch timer = new Stopwatch();
 
-            string msg = "Remeshed mesh to V:" + remeshed.VertexCount + ", F:" + remeshed.TriangleCount;
+            timer.Start();
+            DMesh3 remeshed = RemeshToTargetEdgeLength(dm, targetLength, passes);
+            timer.Stop();
+
+            string msg = "Remeshed the mesh to V:" + remeshed.VertexCount + ", F:" + remeshed.TriangleCount;
+            msg += ", computed in " + timer.ElapsedMilliseconds + " ms";
 
             PConsole.WriteLine(msg);
-            
 
             DA.SetData(0, remeshed);
         }
