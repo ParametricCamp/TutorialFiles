@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using PCampGHPlugin.Utils;
-
-namespace PCampGHPlugin.UtilityComps
+namespace PCampGHPlugin.VectorComps
 {
-    public class PConsoleLogger : GH_Component
+    public class Vector2PtsComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the PConsoleLogger class.
+        /// Initializes a new instance of the DeconstructPointComponent class.
         /// </summary>
-        public PConsoleLogger()
-          : base("PConsoleLogger", "PConsoleLogger",
-              "Description",
-              "PCamp", "Utilities")
+        public Vector2PtsComponent()
+          : base("Vector2Pts", "Vector2Pts",
+              "",
+              "PCamp", "Vector")
         {
         }
 
@@ -25,8 +23,8 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Update", "U", "", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Clear", "C", "", GH_ParamAccess.item);
+            pManager.AddPointParameter("A", "A", "", GH_ParamAccess.item);
+            pManager.AddPointParameter("B", "B", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Logs", "L", "", GH_ParamAccess.list);
+            pManager.AddVectorParameter("V", "V", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -43,23 +41,18 @@ namespace PCampGHPlugin.UtilityComps
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            bool update = false;
-            bool clear = false;
+            Point3d p0 = Point3d.Unset;
+            Point3d p1 = Point3d.Unset;
 
-            if (!DA.GetData(0, ref update)) return;
-            if (!DA.GetData(1, ref clear)) return;
+            DA.GetData(0, ref p0);
+            DA.GetData(1, ref p1);
 
-            if (!update) return;
+            Vector3d v = p1 - p0;
 
-            if (clear) PConsole.Clear();
-
-            List<string> logs = PConsole.Read();
-
-            DA.SetDataList(0, logs);
+            DA.SetData(0, v);
         }
 
-        public override GH_Exposure Exposure => GH_Exposure.quarternary;
-
+        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -71,7 +64,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("BF27F4F6-17C1-467B-A8C6-DBB0F3CCC4ED"); }
+            get { return new Guid("C23007CB-EE43-4BC7-9B15-A6392AB697A0"); }
         }
     }
 }

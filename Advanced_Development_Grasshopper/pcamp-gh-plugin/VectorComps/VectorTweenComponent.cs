@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using PCampGHPlugin.Utils;
-
-namespace PCampGHPlugin.UtilityComps
+namespace PCampGHPlugin.VectorComps
 {
-    public class PConsoleLogger : GH_Component
+    public class VectorTweenComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the PConsoleLogger class.
+        /// Initializes a new instance of the VectorLengthComponent class.
         /// </summary>
-        public PConsoleLogger()
-          : base("PConsoleLogger", "PConsoleLogger",
-              "Description",
-              "PCamp", "Utilities")
+        public VectorTweenComponent()
+          : base("VectorTween", "VectorTween",
+              "",
+              "PCamp", "Vector")
         {
         }
 
@@ -25,8 +23,9 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Update", "U", "", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Clear", "C", "", GH_ParamAccess.item);
+            pManager.AddVectorParameter("A", "A", "", GH_ParamAccess.item);
+            pManager.AddVectorParameter("B", "B", "", GH_ParamAccess.item);
+            pManager.AddNumberParameter("t", "t", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -34,7 +33,8 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Logs", "L", "", GH_ParamAccess.list);
+            pManager.AddVectorParameter("V", "V", "", GH_ParamAccess.item);
+
         }
 
         /// <summary>
@@ -43,23 +43,27 @@ namespace PCampGHPlugin.UtilityComps
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            bool update = false;
-            bool clear = false;
+            Vector3d a = Vector3d.Unset;
+            Vector3d b = Vector3d.Unset;
+            double t = 0;
 
-            if (!DA.GetData(0, ref update)) return;
-            if (!DA.GetData(1, ref clear)) return;
+            DA.GetData(0, ref a);
+            DA.GetData(1, ref b);
+            DA.GetData(2, ref t);
 
-            if (!update) return;
+            Vector3d C = b - a;
+            Vector3d tween = a + C * t;
 
-            if (clear) PConsole.Clear();
+            // Add a warning
+            if (t < 0 || t > 1)
+            {
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Warning, "Your parameter is outside the [0,1] range");
+            }
 
-            List<string> logs = PConsole.Read();
-
-            DA.SetDataList(0, logs);
+            DA.SetData(0, tween);
         }
 
-        public override GH_Exposure Exposure => GH_Exposure.quarternary;
-
+        public override GH_Exposure Exposure => GH_Exposure.tertiary;
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -71,7 +75,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("BF27F4F6-17C1-467B-A8C6-DBB0F3CCC4ED"); }
+            get { return new Guid("9B99D446-E509-47C3-BBE9-9E02A1948D08"); }
         }
     }
 }

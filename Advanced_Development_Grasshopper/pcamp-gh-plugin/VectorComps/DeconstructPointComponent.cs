@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-using PCampGHPlugin.Utils;
-
-namespace PCampGHPlugin.UtilityComps
+namespace PCampGHPlugin.VectorComps
 {
-    public class PConsoleLogger : GH_Component
+    public class DeconstructPointComponent : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the PConsoleLogger class.
+        /// Initializes a new instance of the DeconstructPointComponent class.
         /// </summary>
-        public PConsoleLogger()
-          : base("PConsoleLogger", "PConsoleLogger",
-              "Description",
-              "PCamp", "Utilities")
+        public DeconstructPointComponent()
+          : base("DeconstructPoint", "DeconstructPoint",
+              "",
+              "PCamp", "Vector")
         {
         }
 
@@ -25,8 +23,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBooleanParameter("Update", "U", "", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Clear", "C", "", GH_ParamAccess.item);
+            pManager.AddPointParameter("P", "P", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -34,7 +31,9 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Logs", "L", "", GH_ParamAccess.list);
+            pManager.AddNumberParameter("X", "X", "X component", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Y", "Y", "Y component", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Z", "Z", "Z component", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -43,23 +42,16 @@ namespace PCampGHPlugin.UtilityComps
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            bool update = false;
-            bool clear = false;
+            Point3d p = Point3d.Unset;
 
-            if (!DA.GetData(0, ref update)) return;
-            if (!DA.GetData(1, ref clear)) return;
+            DA.GetData(0, ref p);
 
-            if (!update) return;
-
-            if (clear) PConsole.Clear();
-
-            List<string> logs = PConsole.Read();
-
-            DA.SetDataList(0, logs);
+            DA.SetData(0, p.X);
+            DA.SetData(1, p.Y);
+            DA.SetData(2, p.Z);
         }
 
-        public override GH_Exposure Exposure => GH_Exposure.quarternary;
-
+        public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -71,7 +63,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("BF27F4F6-17C1-467B-A8C6-DBB0F3CCC4ED"); }
+            get { return new Guid("FDA5FC8B-A792-4244-9F0C-7E265783F74F"); }
         }
     }
 }
