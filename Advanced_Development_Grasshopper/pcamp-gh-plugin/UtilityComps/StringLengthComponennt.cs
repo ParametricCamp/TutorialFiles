@@ -6,14 +6,14 @@ using Rhino.Geometry;
 
 namespace PCampGHPlugin.UtilityComps
 {
-    public class StringConcatComponent : GH_Component
+    public class StringLengthComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the StringConcatComponent class.
         /// </summary>
-        public StringConcatComponent()
-          : base("String Concatenation", "String Concat",
-              "Concatenate two strings",
+        public StringLengthComponent()
+          : base("String Length", "String Length",
+              "",
               "PCamp", "Utilities")
         {
         }
@@ -23,8 +23,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("String A", "A", "First string to concatenate", GH_ParamAccess.item);
-            pManager.AddTextParameter("String B", "B", "Second string to concatenate", GH_ParamAccess.item);
+            pManager.AddTextParameter("String A", "A", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -32,8 +31,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("Concat", "C", "Concatenated string", GH_ParamAccess.item);
-            pManager.AddIntegerParameter("Length", "L", "Length of the concatenated string", GH_ParamAccess.item);
+            pManager.AddIntegerParameter("Result", "R", "", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -42,21 +40,13 @@ namespace PCampGHPlugin.UtilityComps
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            // Predefine empty storage variables
             string a = "";
-            string b = "";
 
-            // Fetch input data
             if (!DA.GetData(0, ref a)) return;
-            if (!DA.GetData(1, ref b)) return;
 
-            // Algorithm
-            string concat = a + b;
-            int len = concat.Length;
+            int len = a.Length;
 
-            // Outputs
-            DA.SetData(0, concat);
-            DA.SetData(1, len);
+            DA.SetData(0, len);
         }
 
         public override GH_Exposure Exposure => GH_Exposure.secondary;
@@ -72,7 +62,7 @@ namespace PCampGHPlugin.UtilityComps
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("983A24F9-B513-4D4D-8317-5A5979FF4D82"); }
+            get { return new Guid("005D51C2-C08E-41AE-A801-92A684AE4282"); }
         }
     }
 }

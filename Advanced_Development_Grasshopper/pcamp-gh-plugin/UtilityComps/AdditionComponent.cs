@@ -29,13 +29,13 @@ namespace PCampGHPlugin
     //                                                                
 
 
-    public class AddNumbersComponent : GH_Component
+    public class AdditionComponent : GH_Component
     {
         /// <summary>
         /// Initializes a new instance of the AddNumbersComponent class.
         /// </summary>
-        public AddNumbersComponent()
-          : base("Add Numbers", "AddNums",
+        public AdditionComponent()
+          : base("Addition", "Addition",
               "Adds two numbers together",
               "PCamp", "Utilities")
         {
@@ -84,7 +84,7 @@ namespace PCampGHPlugin
         /// <summary>
         /// Provides an Icon for the component.
         /// </summary>
-        protected override System.Drawing.Bitmap Icon => Properties.Resources.plus_sign;
+        protected override System.Drawing.Bitmap Icon => Properties.Resources.pc_inv;
 
 
         /// <summary>
