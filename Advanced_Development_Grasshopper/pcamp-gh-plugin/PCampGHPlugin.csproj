@@ -47,7 +47,7 @@
     <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
       <StartArguments>/runscript="_-RunScript (
         Set GH = Rhino.GetPlugInObject(""Grasshopper"") 
-        Call GH.OpenDocument(""D:\Dropbox\JL\code\PCamp-TutorialFiles\Advanced_Development_Grasshopper\pcamp-gh-plugin\sample-files\pcamp-components.gh"")
+        Call GH.OpenDocument(""D:\Dropbox\JL\code\ParametricCamp\TutorialFiles\Advanced_Development_Grasshopper\pcamp-gh-plugin\sample-files\pcamp-components.gh"")
       )"</StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>

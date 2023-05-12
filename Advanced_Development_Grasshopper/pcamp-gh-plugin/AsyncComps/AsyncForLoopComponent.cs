@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Threading.Tasks;
 using Grasshopper.Kernel;
+using Rhino;
 using Rhino.Geometry;
-
-using GrasshopperAsyncComponent;
-using System.Windows.Forms;
 
 namespace PCampGHPlugin.AsyncComps
 {
-    public class AsyncForLoopComponent : GH_AsyncComponent
+    public class AsyncForLoopComponent : GH_Component
     {
+        private bool _shouldExpire = false;
+        private string _message = "";
+
         /// <summary>
-        /// Initializes a new instance of the AsyncForLoop class.
+        /// Initializes a new instance of the AsyncForLoopComponent class.
         /// </summary>
         public AsyncForLoopComponent()
           : base("AsyncForLoop", "AsyncForLoop",
               "AsyncForLoop",
               "PCamp", "Async")
         {
-            BaseWorker = new ForLoopWorker();
         }
 
         /// <summary>
@@ -38,7 +38,55 @@ namespace PCampGHPlugin.AsyncComps
             pManager.AddTextParameter("M", "Message", "", GH_ParamAccess.item);
         }
 
-  
+        /// <summary>
+        /// This is the method that actually does the work.
+        /// </summary>
+        /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
+        protected override void SolveInstance(IGH_DataAccess DA)
+        {
+            if (_shouldExpire)
+            {
+                // This is the second time SI was invoked
+                DA.SetData(0, _message);
+                _shouldExpire = false;
+                this.Message = "Done!";
+                return;
+            }
+
+            int iterations = 0;
+            if (!DA.GetData(0, ref iterations)) return;
+
+            this.Message = "Computing...";
+            AsyncForLoop(iterations);
+        }
+
+        private void AsyncForLoop(int it)
+        {
+            Task.Run(() =>
+            {
+                int iterations = 0;
+                for (int i = 0; i < it; i++)
+                {
+                    double expensive = Math.Sqrt(Math.Sqrt(Math.Sqrt(Math.Sqrt(i))));
+                    iterations = i;
+                }
+
+                _message = "Completed " + iterations + " iterations";
+
+                _shouldExpire = true;
+
+                RhinoApp.InvokeOnUiThread((Action)delegate { ExpireSolution(true); });
+            });
+        }
+
+
+        protected override void ExpireDownStreamObjects()
+        {
+            if (_shouldExpire)
+            {
+                base.ExpireDownStreamObjects();
+            }
+        }
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -58,63 +106,7 @@ namespace PCampGHPlugin.AsyncComps
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("7CC720C3-8645-4B6E-BD35-360450E7EF0A"); }
-        }
-
-        public override void AppendAdditionalMenuItems(ToolStripDropDown menu)
-        {
-            base.AppendAdditionalMenuItems(menu);
-            Menu_AppendItem(menu, "Cancel", (s, e) =>
-            {
-                RequestCancellation();
-            });
-        }
-
-
-        private class ForLoopWorker : WorkerInstance
-        {
-            int numberOfIterations = -1;
-            double finalResult = -1;
-
-            public ForLoopWorker() : base(null) { }
-
-            public override void GetData(IGH_DataAccess DA, GH_ComponentParamServer Params)
-            {
-                int _it = -1;
-                DA.GetData(0, ref _it);
-
-                numberOfIterations = _it;
-            }
-
-            public override void DoWork(Action<string, double> ReportProgress, Action Done)
-            {
-                // 👉 Checking for cancellation!
-                if (CancellationToken.IsCancellationRequested) { return; }
-
-                double result = -1;
-
-                for (int i = 0; i <= numberOfIterations; i++)
-                {
-                    if (CancellationToken.IsCancellationRequested) { return; }
-
-                    result = i;
-
-                    ReportProgress(Id, i / (double)numberOfIterations);
-                }
-
-                finalResult = result;
-
-                Done();
-            }
-
-
-            public override void SetData(IGH_DataAccess DA)
-            {
-                DA.SetData(0, finalResult);
-            }
-
-            public override WorkerInstance Duplicate() => new ForLoopWorker();
-
+            get { return new Guid("52860A70-8997-4785-BA87-9C15A5AC837B"); }
         }
     }
 }
