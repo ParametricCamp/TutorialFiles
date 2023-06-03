@@ -1,0 +1,14 @@
+{
+  "Name": "Jose Luis",
+  "Channel": "ParametricCamp",
+  "Active": true,
+  "Age": 3,
+  "Members": [
+    "Richard",
+    "Tim",
+    "Victor",
+    "Chandra",
+    "Andres",
+    "Nicholas"
+  ]
+}
