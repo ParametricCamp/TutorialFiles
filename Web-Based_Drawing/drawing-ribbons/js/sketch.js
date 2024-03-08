@@ -1,9 +1,10 @@
-let shapeColor = [0, 0, 0, 25];
+let alpha = 25;
+let hue = 0;
 let shapeSize = 250;
 let strokeWidth = 10;
 let angle = 0;
-let hue = 0;
 let buffer;
+let shapeColor = [hue, 0, 0, alpha];
 let prevLine = {};
 let brushMode = "line";
 
@@ -25,7 +26,7 @@ function draw() {
   let x2 = mouseX - 0.5 * shapeSize * cos(angle);
   let y2 = mouseY - 0.5 * shapeSize * sin(angle);
 
-  shapeColor = [hue, 100, 100, 25];
+  shapeColor = [hue, 100, 100, alpha];
   stroke(shapeColor);
   strokeWeight(strokeWidth);
   line(x1, y1, x2, y2); 

@@ -1,5 +1,6 @@
 let buffer;
-let shapeColor = [0, 0, 0, 127];
+let alpha = 127;
+let shapeColor = [0, 0, 0, alpha];
 let shapeMode = 'circle';
 let shapeSize = 50;
 
@@ -95,27 +96,27 @@ function keyTyped() {
 
   // COLORS
   if (key === 'R') {
-    shapeColor = [255, 0, 0, 24];
+    shapeColor = [255, 0, 0, alpha];
   } else if (key === 'G') {
-    shapeColor = [0, 255, 0, 24];
+    shapeColor = [0, 255, 0, alpha];
   } else if (key === 'B') {
-    shapeColor = [0, 0, 255, 24];
+    shapeColor = [0, 0, 255, alpha];
     // } else if (key === 'W') {
     //   shapeColor = [255, 255, 255, 24];
   } else if (key === 'K') {
-    shapeColor = [0, 0, 0, 24];
+    shapeColor = [0, 0, 0, alpha];
   } else if (key === 'C') {
-    shapeColor = [0, 255, 255, 24];
+    shapeColor = [0, 255, 255, alpha];
   } else if (key === 'Y') {
-    shapeColor = [255, 255, 0, 24];
+    shapeColor = [255, 255, 0, alpha];
   } else if (key === 'M') {
-    shapeColor = [255, 0, 255, 24];
+    shapeColor = [255, 0, 255, alpha];
   } else if (key === 'O') {
-    shapeColor = [255, 165, 0, 24];
+    shapeColor = [255, 165, 0, alpha];
   } else if (key === 'P') {
-    shapeColor = [255, 192, 203, 24];
+    shapeColor = [255, 192, 203, alpha];
   } else if (key === 'L') {
-    shapeColor = [123, 104, 238, 24];
+    shapeColor = [123, 104, 238, alpha];
   }
 
   // SAVING
