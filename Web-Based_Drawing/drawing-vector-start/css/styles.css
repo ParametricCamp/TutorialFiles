@@ -1,0 +1,18 @@
+/* Makes the canvas stick to (0, 0) */
+/* html, body {
+    margin: 0;
+    padding: 0;
+} */
+
+
+/* Makes the canvas centered on the page */
+canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
