@@ -1,7 +1,8 @@
 let alpha = 127;
-let shapeColor = [0, 0, 0, alpha];
+let fillColor = [0, 0, 0, alpha];
+let strokeColor = [0, 0, 0, 255];
+let strokeW = 2;
 let shapeMode = 'ellipse';
-let shapeSize = 50;
 let lastClicked = {x: 0, y: 0};
 
 let doc = {
@@ -24,19 +25,21 @@ function draw() {
     const shape = doc.shapes[i];
     switch(shape.type) {
       case 'ellipse':
-        noStroke();
+        stroke(shape.strokeColor);
+        strokeWeight(shape.strokeW);
         fill(shape.fillColor);
         ellipse(shape.x, shape.y, shape.w, shape.h);
         break;
       case 'rectangle':
-        noStroke();
+        stroke(shape.strokeColor);
+        strokeWeight(shape.strokeW);
         fill(shape.fillColor);
         rect(shape.x, shape.y, shape.w, shape.h);
         break;
       case 'line':
         noFill();
         stroke(shape.strokeColor);
-        strokeWeight(shape.strokeWeight);
+        strokeWeight(shape.strokeW);
         line(shape.x1, shape.y1, shape.x2, shape.y2);
         break;
     }
@@ -46,20 +49,23 @@ function draw() {
   if (mouseIsPressed) {
     switch (shapeMode) {
       case 'ellipse':
-        noStroke();
-        fill(shapeColor);
+        stroke(strokeColor);
+        strokeWeight(strokeW);
+        fill(fillColor);
         ellipse(lastClicked.x, lastClicked.y, 2 * Math.abs(mouseX - lastClicked.x), 2 * Math.abs(mouseY - lastClicked.y));
         break;
 
       case 'rectangle':
-        noStroke();
-        fill(shapeColor);
+        stroke(strokeColor);
+        strokeWeight(strokeW);
+        fill(fillColor);
         rect(lastClicked.x, lastClicked.y, mouseX - lastClicked.x, mouseY - lastClicked.y);
         break;
 
       case 'line':
-        stroke(shapeColor);
-        strokeWeight(shapeSize);
+        noFill();
+        stroke(strokeColor);
+        strokeWeight(strokeW);
         line(lastClicked.x, lastClicked.y, mouseX, mouseY);
         break;
     }
@@ -82,7 +88,9 @@ function mouseReleased() {
         y: lastClicked.y,
         w: 2 * (mouseX - lastClicked.x),
         h: 2 * (mouseY - lastClicked.y),
-        fillColor: shapeColor
+        fillColor: fillColor,
+        strokeColor: strokeColor,
+        strokeW: strokeW
       };
       break;
     case 'rectangle':
@@ -92,7 +100,9 @@ function mouseReleased() {
         y: lastClicked.y,
         w: mouseX - lastClicked.x,
         h: mouseY - lastClicked.y,
-        fillColor: shapeColor
+        fillColor: fillColor,
+        strokeColor: strokeColor,
+        strokeW: strokeW
       };
       break;
     case 'line':
@@ -102,8 +112,8 @@ function mouseReleased() {
         y1: lastClicked.y,
         x2: mouseX,
         y2: mouseY,
-        strokeColor: shapeColor,
-        strokeWeight: shapeSize
+        strokeColor: strokeColor,
+        strokeW: strokeW
       };
       break;
   }
@@ -124,36 +134,36 @@ function keyTyped() {
 
   // SIZE
   if (key === '+') {
-    shapeSize += 10;
-    console.log("Shape size is now " + shapeSize);
+    strokeW += 2;
+    console.log("Shape size is now " + strokeW);
   } else if (key === '-') {
-    shapeSize -= 10;
-    console.log("Shape size is now " + shapeSize);
+    strokeW -= 2;
+    console.log("Shape size is now " + strokeW);
   }
 
   // COLORS
   if (key === 'R') {
-    shapeColor = [255, 0, 0, alpha];
+    fillColor = [255, 0, 0, alpha];
   } else if (key === 'G') {
-    shapeColor = [0, 255, 0, alpha];
+    fillColor = [0, 255, 0, alpha];
   } else if (key === 'B') {
-    shapeColor = [0, 0, 255, alpha];
+    fillColor = [0, 0, 255, alpha];
   } else if (key === 'W') {
-    shapeColor = [255, 255, 255, alpha];
+    fillColor = [255, 255, 255, alpha];
   } else if (key === 'K') {
-    shapeColor = [0, 0, 0, alpha];
+    fillColor = [0, 0, 0, alpha];
   } else if (key === 'C') {
-    shapeColor = [0, 255, 255, alpha];
+    fillColor = [0, 255, 255, alpha];
   } else if (key === 'Y') {
-    shapeColor = [255, 255, 0, alpha];
+    fillColor = [255, 255, 0, alpha];
   } else if (key === 'M') {
-    shapeColor = [255, 0, 255, alpha];
+    fillColor = [255, 0, 255, alpha];
   } else if (key === 'O') {
-    shapeColor = [255, 165, 0, alpha];
+    fillColor = [255, 165, 0, alpha];
   } else if (key === 'P') {
-    shapeColor = [255, 192, 203, alpha];
+    fillColor = [255, 192, 203, alpha];
   } else if (key === 'L') {
-    shapeColor = [123, 104, 238, alpha];
+    fillColor = [123, 104, 238, alpha];
   }
 
   // SAVING
