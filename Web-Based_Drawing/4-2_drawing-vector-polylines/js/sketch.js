@@ -1,9 +1,12 @@
+const SNAP_DISTANCE = 20;
+
 let alpha = 127;
 let fillColor = [0, 0, 0, alpha];
 let strokeColor = [0, 0, 0, 255];
 let strokeW = 2;
 let shapeMode = 'ellipse';
 let lastClicked = {x: 0, y: 0};
+let shapePoints = [];
 
 let doc = {
   backgroundColor: [255, 255, 255],
@@ -42,10 +45,20 @@ function draw() {
         strokeWeight(shape.strokeW);
         line(shape.x1, shape.y1, shape.x2, shape.y2);
         break;
+      case 'polyline':
+        stroke(shape.strokeColor);
+        strokeWeight(shape.strokeW);
+        fill(shape.fillColor);
+        beginShape();
+        for (let i = 0; i < shape.vertices.length; i++) {
+          vertex(shape.vertices[i].x, shape.vertices[i].y);
+        }
+        endShape();
+        break;
     }
   }
 
-  // Draw shapes continuously
+  // Draw shapes that we are currently manipulating/creating
   if (mouseIsPressed) {
     switch (shapeMode) {
       case 'ellipse':
@@ -70,12 +83,40 @@ function draw() {
         break;
     }
   }
+
+  // Draw polyline?
+  if (shapeMode === 'polyline') {
+    stroke(strokeColor);
+    strokeWeight(strokeW);
+    fill(fillColor);
+    beginShape();
+    for (let i = 0; i < shapePoints.length; i++) {
+      vertex(shapePoints[i].x, shapePoints[i].y);
+    }
+    vertex(mouseX, mouseY);
+    endShape();
+  }
 }
 
 function mousePressed() {
   // console.log("Mouse pressed at " + mouseX + ", " + mouseY);
   lastClicked.x = mouseX;
   lastClicked.y = mouseY;
+
+  if (shapeMode === 'polyline') {
+    let shouldSnap = false;
+    if (shapePoints.length > 0 && 
+      dist(mouseX, mouseY, shapePoints[0].x, shapePoints[0].y) < SNAP_DISTANCE) {
+      shouldSnap = true;
+    }
+
+    if (shouldSnap) {
+      shapePoints.push({x: shapePoints[0].x, y: shapePoints[0].y});
+      addPolyToDocument();
+    } else {
+      shapePoints.push({x: mouseX, y: mouseY});
+    }
+  }
 }
 
 function mouseReleased() {
@@ -118,7 +159,9 @@ function mouseReleased() {
       break;
   }
 
-  doc.shapes.push(shape);
+  if (shape !== undefined) {
+    doc.shapes.push(shape);
+  }
 }
 
 
@@ -130,6 +173,16 @@ function keyTyped() {
     shapeMode = 'rectangle';
   } else if (key === 'l') {
     shapeMode = 'line';
+  } else if (key === 'p') {
+    shapeMode = 'polyline';
+    shapePoints = [];
+  }
+
+  // SHAPE INTERACTIONS
+  if (keyCode === ENTER) {
+    if (shapeMode === 'polyline') {
+      addPolyToDocument();
+    }
   }
 
   // SIZE
@@ -166,6 +219,7 @@ function keyTyped() {
     fillColor = [123, 104, 238, alpha];
   }
 
+
   // SAVING
   if (key === 'f') {
     saveCanvas('drawing_' + getDateTime(), 'png');
@@ -174,9 +228,20 @@ function keyTyped() {
   }
 }
 
+function addPolyToDocument() {
+  let shape = {
+    type: 'polyline',
+    vertices: shapePoints,
+    fillColor: fillColor,
+    strokeColor: strokeColor,
+    strokeW: strokeW
+  };
+  doc.shapes.push(shape);
+  shapePoints = [];
+}
 
 function parseFile(file) {
-  console.log(file);
+  // console.log(file);
 
   if (file.subtype === 'json') {
     doc = file.data;
