@@ -7,7 +7,10 @@ const commandLineArgs = require('command-line-args');
 const optionDefinitions = [
     { name: 'prompt', alias: 'p', type: String, defaultValue: "an isometric view of a miniature city, tilt shift, bokeh, voxel, vray render, high detail" },
     { name: 'number', alias: 'n', type: Number, defaultValue: 1 },
-    { name: 'size', alias: 's', type: Number, defaultValue: 256 },
+    { name: 'size', alias: 's', type: String, defaultValue: "1024x1024" },
+    { name: 'model', alias: 'm', type: String, defaultValue: "dall-e-2" },
+    { name: 'quality', alias: 'q', type: String, defaultValue: "standard" },
+    { name: 'style', alias: 'S', type: String, defaultValue: "natural" },
 ];
 
 const options = commandLineArgs(optionDefinitions);
@@ -24,7 +27,10 @@ const predict = async function () {
     const response = await openai.createImage({
         prompt: options.prompt,
         n: options.number,
-        size: `${options.size}x${options.size}`,
+        size: options.size,
+        model: options.model,
+        quality: options.quality,
+        style: options.style,
         response_format: 'b64_json',
     });
 

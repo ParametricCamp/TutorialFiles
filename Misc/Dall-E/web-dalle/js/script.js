@@ -19,15 +19,19 @@ reqButton.onclick = function () {
   const key = document.getElementById('api-key').value;
   const prompt = document.getElementById('text-prompt').value;
   const count = Number(document.getElementById('image-count').value);
-  const radios = document.getElementsByName('image-size');
+  const sizeRadios = document.getElementsByName('image-size');
   let size;
-  for (let i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      size = Number(radios[i].value);
+  for (let i = 0; i < sizeRadios.length; i++) {
+    if (sizeRadios[i].checked) {
+      size = sizeRadios[i].value;
       break;
     }
   }
 
+  const model = document.getElementById('model-selector').value;
+  const quality = document.getElementById('quality-selector').value;
+  const style = document.getElementById('style-selector').value;
+  
   // These can be handled by the server
   // // Some validity checks.
   // if (key.length == 0)
@@ -61,7 +65,10 @@ reqButton.onclick = function () {
   const reqBody = {
     prompt: prompt,
     n: count,
-    size: size + "x" + size,
+    size: size,
+    model: model,
+    quality: quality,
+    style: style,
     response_format: 'url',
   };
 
@@ -95,7 +102,7 @@ reqButton.onclick = function () {
  */
 function addImages(jsonData, prompt) {
     
-  // console.log(jsonData);
+  console.log(jsonData);
   reqButton.disabled = false;
 
   // Handle a possible error response from the API
@@ -112,7 +119,7 @@ function addImages(jsonData, prompt) {
     let imgData = jsonData.data[i];
     let img = document.createElement('img');
     img.src = imgData.url;
-    img.alt = prompt;
+    img.alt = `prompt: ${prompt}, revised_prompt: ${imgData.revised_prompt}`;
     container.prepend(img);
   }
 
