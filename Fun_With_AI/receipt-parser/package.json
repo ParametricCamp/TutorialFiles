@@ -1,0 +1,15 @@
+{
+  "name": "receipt-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parse-receipts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-csv": "^5.0.1",
+    "openai": "^4.53.1"
+  }
+}

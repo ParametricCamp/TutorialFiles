@@ -1,0 +1,162 @@
+[
+  {
+    "image": "PXL_20240122_222128967.jpg",
+    "reqTime": "2024-07-26T14:54:38.992Z",
+    "date": "2024/01/09",
+    "gallons": 11.797,
+    "price_per_gallon": 3.299,
+    "total_price": 38.92
+  },
+  {
+    "image": "PXL_20240122_222144017.jpg",
+    "reqTime": "2024-07-26T14:54:47.128Z",
+    "date": "2023/12/03",
+    "gallons": 11.35,
+    "price_per_gallon": 3.529,
+    "total_price": 40.05
+  },
+  {
+    "image": "PXL_20240122_222156962.jpg",
+    "reqTime": "2024-07-26T14:54:54.986Z",
+    "date": "2023/10/21",
+    "gallons": 11.801,
+    "price_per_gallon": 3.659,
+    "total_price": 43.18
+  },
+  {
+    "image": "PXL_20240122_222207815.jpg",
+    "reqTime": "2024-07-26T14:55:04.230Z",
+    "date": "2023/09/17",
+    "gallons": 11.283,
+    "price_per_gallon": 3.749,
+    "total_price": 42.3
+  },
+  {
+    "image": "PXL_20240122_222221313.jpg",
+    "reqTime": "2024-07-26T14:55:12.400Z",
+    "date": "2023/07/30",
+    "gallons": 10.813,
+    "price_per_gallon": 3.699,
+    "total_price": 40
+  },
+  {
+    "image": "PXL_20240122_222236211.jpg",
+    "reqTime": "2024-07-26T14:55:23.777Z",
+    "date": "2023/07/17",
+    "gallons": 10.453,
+    "price_per_gallon": 3.639,
+    "total_price": 38.04
+  },
+  {
+    "image": "PXL_20240122_222253983.jpg",
+    "reqTime": "2024-07-26T14:55:30.990Z",
+    "date": "2023/07/05",
+    "gallons": 11.609,
+    "price_per_gallon": 3.639,
+    "total_price": 42.25
+  },
+  {
+    "image": "PXL_20240122_222307724.jpg",
+    "reqTime": "2024-07-26T14:55:39.439Z",
+    "date": "2023/06/22",
+    "gallons": 11.664,
+    "price_per_gallon": 3.559,
+    "total_price": 41.51
+  },
+  {
+    "image": "PXL_20240122_222324919.jpg",
+    "reqTime": "2024-07-26T14:55:47.961Z",
+    "date": "2023/06/02",
+    "gallons": 12.038,
+    "price_per_gallon": 3.529,
+    "total_price": 42.48
+  },
+  {
+    "image": "PXL_20240122_222411839.jpg",
+    "reqTime": "2024-07-26T14:55:55.223Z",
+    "date": "2023/04/25",
+    "gallons": 11.573,
+    "price_per_gallon": 4.099,
+    "total_price": 47.44
+  },
+  {
+    "image": "PXL_20240122_222425333.jpg",
+    "reqTime": "2024-07-26T14:56:04.002Z",
+    "date": "2023/03/26",
+    "gallons": 11.475,
+    "price_per_gallon": 3.499,
+    "total_price": 40.15
+  },
+  {
+    "image": "PXL_20240122_222442778.jpg",
+    "reqTime": "2024-07-26T14:56:11.203Z",
+    "date": "2023/02/26",
+    "gallons": 11.774,
+    "price_per_gallon": 3.049,
+    "total_price": 35.9
+  },
+  {
+    "image": "PXL_20240122_222510391.jpg",
+    "reqTime": "2024-07-26T14:56:19.315Z",
+    "date": "2023/01/29",
+    "gallons": 10.222,
+    "price_per_gallon": 3.099,
+    "total_price": 31.68
+  },
+  {
+    "image": "PXL_20240122_222523288.jpg",
+    "reqTime": "2024-07-26T14:56:29.622Z",
+    "date": "2022/12/09",
+    "gallons": 4.813,
+    "price_per_gallon": 3.579,
+    "total_price": 17.23
+  },
+  {
+    "image": "PXL_20240122_222539485.jpg",
+    "reqTime": "2024-07-26T14:56:37.811Z",
+    "date": "2022/12/07",
+    "gallons": 8.744,
+    "price_per_gallon": 3.759,
+    "total_price": 32.87
+  },
+  {
+    "image": "PXL_20240122_222553809.jpg",
+    "reqTime": "2024-07-26T14:56:44.876Z",
+    "date": "2022/11/27",
+    "gallons": 11.729,
+    "price_per_gallon": 3.699,
+    "total_price": 43.39
+  },
+  {
+    "image": "PXL_20240122_222606478.jpg",
+    "reqTime": "2024-07-26T14:56:52.265Z",
+    "date": "2022/10/20",
+    "gallons": 11.187,
+    "price_per_gallon": 3.499,
+    "total_price": 39.14
+  },
+  {
+    "image": "PXL_20240122_222618126.jpg",
+    "reqTime": "2024-07-26T14:56:59.466Z",
+    "date": "2022/10/07",
+    "gallons": 11.16,
+    "price_per_gallon": 3.499,
+    "total_price": 39.05
+  },
+  {
+    "image": "PXL_20240122_222632249.jpg",
+    "reqTime": "2024-07-26T14:57:12.821Z",
+    "date": "2022/08/24",
+    "gallons": 11.808,
+    "price_per_gallon": 4.159,
+    "total_price": 49.11
+  },
+  {
+    "image": "PXL_20240122_222645394.jpg",
+    "reqTime": "2024-07-26T14:57:20.252Z",
+    "date": "2022/07/30",
+    "gallons": 11.264,
+    "price_per_gallon": 4.699,
+    "total_price": 52.93
+  }
+]
