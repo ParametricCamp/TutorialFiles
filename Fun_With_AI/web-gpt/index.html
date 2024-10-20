@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <p>A sample webpage to learn how to query the Text Completion API from a front end application.</p>
+    <p>A sample webpage to learn how to query the OpenAI Chat Completion API from a front end application.</p>
 
     <fieldset>
         <legend>Setup</legend>
@@ -22,32 +22,42 @@
     <fieldset>
         <legend>Prompt</legend>
 
-        <textarea id="text-prompt" rows="4" cols="52">Tell me the story of an invisible city full of dreamful architects</textarea>
+        <textarea id="text-role" rows="4" cols="52">You are a wonderful storyteller.</textarea>
+
+        <textarea id="text-prompt" rows="4" cols="52">Tell me the story of an invisible city full of dreamful architects.</textarea>
    
         <div>Text Model:</div>
         <div>
-            <input type="radio" id="model-davinci" name="text-model" value="text-davinci-003" checked>
-            <label for="text-davinci-003">Davinci (better)</label>
+            <input type="radio" name="text-model" value="o1-preview">
+            <label for="o1-preview">o1-preview</label>
         </div>
         <div>
-            <input type="radio" id="model-curie" name="text-model" value="text-curie-001">
-            <label for="text-curie-001">Curie</label>
+            <input type="radio" name="text-model" value="o1-mini">
+            <label for="o1-mini">o1-mini</label>
         </div>
         <div>
-            <input type="radio" id="model-babbage" name="text-model" value="text-babbage-001">
-            <label for="text-babbage-001">Babbage</label>
+            <input type="radio" name="text-model" value="gpt-4o" checked>
+            <label for="gpt-4o">gpt-4o</label>
         </div>
         <div>
-            <input type="radio" id="model-ada" name="text-model" value="text-ada-001">
-            <label for="text-ada-001">Ada (faster)</label>
+            <input type="radio" name="text-model" value="gpt-4o-mini">
+            <label for="gpt-4o-mini">gpt-4o-mini</label>
+        </div>
+        <div>
+            <input type="radio" name="text-model" value="gpt-4">
+            <label for="gpt-4">gpt-4</label>
+        </div>
+        <div>
+            <input type="radio" name="text-model" value="gpt-3.5-turbo">
+            <label for="gpt-3.5-turbo">gpt-3.5-turbo</label>
         </div>
 
         <div>
-            <div>Max. tokens (similar to words): <input id="token-count" value="256"></div>
+            <div>Max. tokens (similar to words): <input id="token-count" value="1024"></div>
         </div>
 
         <div>
-            <div>Temperature (0-1): <input id="temperature" value="0.1"></div>
+            <div>Temperature (0-1): <input id="temperature" value="1"></div>
         </div>
 
         <div>

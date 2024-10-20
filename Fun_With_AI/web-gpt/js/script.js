@@ -1,7 +1,7 @@
 // We can define here the behavior for the elements on the website...
 
 // URL for POST requests
-const gptEndpoint = 'https://api.openai.com/v1/completions';
+const gptEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 // Fetch DOM elements
 const reqButton = document.getElementById('button-request');
@@ -16,6 +16,7 @@ reqButton.onclick = function () {
 
   // Fetch image request data
   const key = document.getElementById('api-key').value;
+  const role = document.getElementById('text-role').value;
   const prompt = document.getElementById('text-prompt').value;
   const radios = document.getElementsByName('text-model');
   let model;
@@ -34,14 +35,21 @@ reqButton.onclick = function () {
   // https://api.openai.com/v1/completions
   const reqBody = {
     model: model,
-    prompt: prompt,
-    max_tokens: tokens,
+    messages: [
+      {
+        role: "system",        
+        content: role, 
+      },
+      {
+        role: "user",
+        content: prompt,
+      }
+    ],
+    max_completion_tokens: tokens,
     temperature: temp,
-    top_p: 0.5,
-    stream: false,
-    logprobs: null,
-    // stop: "\n"  // this was returning empty completions
   };  
+  console.log("Sending request with body:");
+  console.log(reqBody);
 
   // Form the data for a POST request:
   const reqParams = {
@@ -97,7 +105,7 @@ function addText(jsonData, prompt) {
     questionDiv.appendChild(questionP);
 
     // Answer text box
-    const textData = jsonData.choices[i].text;
+    const textData = jsonData.choices[i].message.content;
     const answerDiv = document.createElement('div');
     answerDiv.className = "answer";
     const answerP = document.createElement('p');
